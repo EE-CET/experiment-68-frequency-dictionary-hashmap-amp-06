@@ -5,17 +5,27 @@ import java.util.Scanner;
 public class Solution {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        
-        // TODO: Read a single line of text
-        
-        // TODO: Split the text into individual words
-        
-        // TODO: Create a HashMap to store the frequency of each word
-        
-        // TODO: Iterate through the words and update their frequencies in the map
-        
-        // TODO: Iterate through the map and print the unique words and their counts
-        // Format: "word: count"
-        
+
+        String text = scanner.nextLine().trim();
+        String[] words = text.split("\\s+");
+
+        HashMap<String, Integer> map = new HashMap<>();
+
+        for (String word : words) {
+            map.put(word, map.getOrDefault(word, 0) + 1);
+        }
+
+        StringBuilder output = new StringBuilder();
+
+        for (Map.Entry<String, Integer> entry : map.entrySet()) {
+            output.append(entry.getKey())
+                  .append(": ")
+                  .append(entry.getValue())
+                  .append("\n");
+        }
+
+        System.out.print(output.toString());
+
+        scanner.close();
     }
 }
