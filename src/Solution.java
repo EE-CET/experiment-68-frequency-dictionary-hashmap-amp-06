@@ -6,28 +6,25 @@ public class Solution {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        // Read a single line of text
-        String text = scanner.nextLine();
-
-        // Split the text into words
+        String text = scanner.nextLine().trim();
         String[] words = text.split("\\s+");
 
-        // Create a HashMap to store word frequencies
         HashMap<String, Integer> map = new HashMap<>();
 
-        // Count frequencies
         for (String word : words) {
-            if (map.containsKey(word)) {
-                map.put(word, map.get(word) + 1);
-            } else {
-                map.put(word, 1);
-            }
+            map.put(word, map.getOrDefault(word, 0) + 1);
         }
 
-        // Print words and their counts
+        StringBuilder output = new StringBuilder();
+
         for (Map.Entry<String, Integer> entry : map.entrySet()) {
-            System.out.println(entry.getKey() + ": " + entry.getValue());
+            output.append(entry.getKey())
+                  .append(": ")
+                  .append(entry.getValue())
+                  .append("\n");
         }
+
+        System.out.print(output.toString());
 
         scanner.close();
     }
